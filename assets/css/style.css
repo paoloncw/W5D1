@@ -57,6 +57,7 @@ body {
 #site-header nav ul {
   padding: 0;
   margin: 0;
+  text-align: center;
 }
 
 #site-header nav li {
