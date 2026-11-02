@@ -263,3 +263,26 @@ table {
   line-height: 2.4;
   padding: 30px 20px;
 }
+
+@media (min-width: 768px) {
+  #site-header {
+    padding: 60px 20px 40px;
+  }
+  main {
+    padding: 40px 20px;
+  }
+  main section {
+    padding: 32px;
+  }
+  .avatar {
+    float: left;
+    margin: 0 24px 12px 0;
+  }
+  input,
+  textarea{
+    width: 60%;
+  }
+  button {
+    width: auto;
+  }
+}
