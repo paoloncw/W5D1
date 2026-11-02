@@ -103,7 +103,7 @@ main section {
 
 /* Titoli del main con marker */
 h2 {
-  font-size: 1.8rem;
+  font-size: clamp(1.3rem, 4vw, 1.8rem);
   color: hsl(220, 60%, 30%);
   text-align: left;
   line-height: 1.6;
@@ -268,20 +268,25 @@ table {
   #site-header {
     padding: 60px 20px 40px;
   }
+
   main {
     padding: 40px 20px;
   }
+
   main section {
     padding: 32px;
   }
+
   .avatar {
     float: left;
     margin: 0 24px 12px 0;
   }
+
   input,
-  textarea{
+  textarea {
     width: 60%;
   }
+
   button {
     width: auto;
   }
