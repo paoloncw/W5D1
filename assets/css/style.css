@@ -30,6 +30,9 @@ body {
 
 /* Header */
 #site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
   background-color: hsl(221, 39%, 20%);
   background-image: url("../img/sfondo.jpg");
   background-size: cover;
