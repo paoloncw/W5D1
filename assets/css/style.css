@@ -194,6 +194,18 @@ h3 {
   background-color: #ffffff;
 }
 
+.project:first-of-type::after {
+  content: "NEW";
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  background-color: hsl(0, 100%, 50%);
+  color: hsl(0, 0%, 100%);
+  border-radius: 4px 4px 4px 4px;
+  padding: 4px 8px;
+  margin: 10px;
+}
+
 /*vecchio badge */
 
 /*.project:first-of-type h3::after {
