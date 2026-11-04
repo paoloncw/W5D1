@@ -15,3 +15,9 @@ overlay.addEventListener("click", (event) => {
         overlay.setAttribute("hidden", "");
     }
 });
+
+document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+        overlay.setAttribute("hidden", "");
+    }
+});
