@@ -324,7 +324,9 @@ table {
 #site-footer {
   background-color: hsl(220, 40%, 15%);
   color: #ffffff;
-  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   font-size: 0.9rem;
   line-height: 2.4;
   padding: 30px 20px;
