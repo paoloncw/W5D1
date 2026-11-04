@@ -62,11 +62,11 @@ body {
 #site-header nav ul {
   padding: 0;
   margin: 0;
-  text-align: center;
-}
-
-#site-header nav li {
-  display: inline-block;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 4px;
+  list-style: none;
 }
 
 #site-header nav a {
@@ -339,7 +339,7 @@ table {
 }
 
 
-/*modo perche funzioni anche da mobile*/
+/* questo sotto dice: quando si supera la larghezza di 768px applica queste regole*/
 @media (min-width: 768px) {
   #site-header {
     padding: 60px 20px 40px;
