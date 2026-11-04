@@ -162,19 +162,23 @@ h3 {
 
 /* Lista competenze a righe alternate */
 .skill-list {
-  line-height: 2.2;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 0;
+  list-style: none;
 }
 
-.skill-list li:nth-child(odd) {
-  background-color: #f5f7fb;
-}
-
-.skill-list li:nth-child(even) {
-  background-color: #ffffff;
+.skill-list li {
+  background-color: hsl(220, 60%, 30%);
+  color:#ffffff;
+  padding: 8px 14px;
+  border-radius: 999px;
 }
 
 .skill-list li:first-child {
   font-weight: bold;
+  background-color: hsl(45, 100%, 40%);
 }
 
 
