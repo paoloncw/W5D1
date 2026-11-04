@@ -288,6 +288,26 @@ table {
   padding: 30px 20px;
 }
 
+/* Back to top button */
+.back-to-top {
+  position:fixed;
+  bottom: 20px;
+  right: 20px;
+  border-radius: 50%;
+  background-color: hsl(220, 60%, 30%);
+  color: #ffffff;
+  z-index: 50;
+  display: block;
+  width: 48px;
+  height: 48px;
+  text-align: center;
+  line-height: 48px;
+  font-size: 24px;
+  text-decoration: none;
+}
+
+
+/*modo perche funzioni anche da mobile*/
 @media (min-width: 768px) {
   #site-header {
     padding: 60px 20px 40px;
