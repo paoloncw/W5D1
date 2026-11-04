@@ -132,7 +132,8 @@ h3 {
   border: 4px solid hsl(45, 90%, 60%);
   border-radius: 50%;
   display: block;
-  margin: 0 auto 16px;
+  margin: 0 auto;
+  flex-shrink: 0;
 }
 
 #chi-sono {
@@ -153,12 +154,11 @@ h3 {
   color: hsl(220, 60%, 30%);
 }
 
-
-/* Sezione successiva: clear del float dell'avatar */
-#competenze {
-  clear: both;
+.bio {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
-
 
 /* Lista competenze a righe alternate */
 .skill-list {
@@ -338,7 +338,6 @@ table {
   text-decoration: none;
 }
 
-
 /* questo sotto dice: quando si supera la larghezza di 768px applica queste regole*/
 @media (min-width: 768px) {
   #site-header {
@@ -354,8 +353,7 @@ table {
   }
 
   .avatar {
-    float: left;
-    margin: 0 24px 12px 0;
+    margin: 0;
   }
 
   input,
@@ -365,5 +363,10 @@ table {
 
   button {
     width: auto;
+  }
+
+  .bio {
+    flex-direction: row;
+    align-items: flex-start;
   }
 }
