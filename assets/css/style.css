@@ -186,8 +186,8 @@ h3 {
 .project {
   padding: 16px;
   border-radius: 8px;
-  margin-bottom: 16px;
   position: relative;
+  flex: 1 1 260px;
 }
 
 .project:nth-of-type(odd) {
@@ -208,6 +208,12 @@ h3 {
   border-radius: 4px 4px 4px 4px;
   padding: 4px 8px;
   margin: 10px;
+}
+
+.projects-grid {
+  display:flex;
+  flex-wrap: wrap;
+  gap: 16px;
 }
 
 /*vecchio badge */
