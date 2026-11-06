@@ -77,11 +77,14 @@ body {
   margin: 0 4px;
   border-radius: 4px;
   line-height: 1.6;
+  /* PASSO 1: la transition va sulla regola NEUTRA (non su :hover) */
+  transition: background-color 200ms ease, color 200ms ease, transform 200ms ease;
 }
 
 #site-header nav a:hover {
   color: #ffffff;
   background-color: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
 }
 
 
@@ -134,6 +137,12 @@ h3 {
   display: block;
   margin: 0 auto;
   flex-shrink: 0;
+  /* PASSO 4: avatar */
+  transition: transform 300ms ease;
+}
+
+.avatar:hover {
+  transform: scale(1.05) rotate(-2deg);
 }
 
 #chi-sono {
@@ -181,6 +190,16 @@ h3 {
   background-color: hsl(45, 100%, 40%);
 }
 
+/* PASSO 3: chip. Il :hover sta DOPO :first-child (stessa specificita', vince l'ultimo) */
+.skill-list li {
+  transition: transform 150ms ease, background-color 150ms ease;
+}
+
+.skill-list li:hover {
+  transform: translateY(-2px);
+  background-color: hsl(220, 60%, 40%);
+}
+
 
 /* Progetti alternati + tag NEW sul primo */
 .project {
@@ -188,6 +207,14 @@ h3 {
   border-radius: 8px;
   position: relative;
   flex: 1 1 260px;
+  /* PASSO 2: card lift */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  transition: transform 200ms ease-out, box-shadow 200ms ease-out;
+}
+
+.project:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15);
 }
 
 .project:nth-of-type(odd) {
@@ -208,6 +235,21 @@ h3 {
   border-radius: 4px 4px 4px 4px;
   padding: 4px 8px;
   margin: 10px;
+  /* PASSO 5: il badge NEW pulsa all'infinito */
+  animation: pulse-badge 2s ease-in-out infinite;
+  transform-origin: top right;
+}
+
+@keyframes pulse-badge {
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.08);
+  }
 }
 
 .projects-grid {
@@ -243,6 +285,69 @@ h3 {
 
 .overlay[hidden] {
   display: none;
+}
+
+/* PASSO 6: fade-in dell'overlay e slide-up del box (solo quando NON e' hidden) */
+@keyframes overlay-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modal-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -40%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.overlay:not([hidden]) {
+  animation: overlay-in 200ms ease-out;
+}
+
+.overlay:not([hidden]) .modal {
+  animation: modal-in 250ms ease-out;
+}
+
+/* EXTRA 12: animazione di uscita. La classe .closing la mette script.js */
+@keyframes overlay-out {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes modal-out {
+  from {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+
+  to {
+    opacity: 0;
+    transform: translate(-50%, -40%);
+  }
+}
+
+/* stessa specificita' delle regole :not([hidden]) ma scritte DOPO: vincono loro */
+.overlay.closing {
+  animation: overlay-out 200ms ease-in forwards;
+}
+
+.overlay.closing .modal {
+  animation: modal-out 200ms ease-in forwards;
 }
 
 .close {
@@ -348,6 +453,61 @@ table {
   line-height: 48px;
   font-size: 24px;
   text-decoration: none;
+  /* PASSO 7: pulse-ring continuo + scale al hover */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  animation: pulse-ring 2.2s ease-out infinite;
+  transition: transform 200ms ease-out;
+}
+
+.back-to-top:hover {
+  transform: scale(1.08);
+}
+
+@keyframes pulse-ring {
+  0% {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), 0 0 0 0 rgba(34, 76, 161, 0.6);
+  }
+
+  100% {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), 0 0 0 18px rgba(34, 76, 161, 0);
+  }
+}
+
+/* PASSO 8: le sezioni entrano dal basso, una dopo l'altra */
+@keyframes section-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+main section {
+  animation: section-in 500ms ease-out both;
+}
+
+main section:nth-of-type(1) {
+  animation-delay: 0ms;
+}
+
+main section:nth-of-type(2) {
+  animation-delay: 80ms;
+}
+
+main section:nth-of-type(3) {
+  animation-delay: 160ms;
+}
+
+main section:nth-of-type(4) {
+  animation-delay: 240ms;
+}
+
+main section:nth-of-type(5) {
+  animation-delay: 320ms;
 }
 
 /* questo sotto dice: quando si supera la larghezza di 768px applica queste regole*/
@@ -380,5 +540,17 @@ table {
   .bio {
     flex-direction: row;
     align-items: flex-start;
+  }
+}
+
+/* PASSO 9: accessibilita'. Chi ha chiesto "meno animazioni" al sistema non le vede. */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
